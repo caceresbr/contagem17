@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartaz de Divulgação Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+        body {
+            font-family: 'Cardo', serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2.42rem;
+            margin-bottom: 10px;
+            color: #003cff;
+        }
+        h1 span {
+            display: block;
+        }
+        .countdown {
+            width: 8cm;
+            height: 1.8cm;
+            background-color: #FFD700;
+            color: #228B22;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 88%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .local {
+            background-color: #FFD700;
+            color: black;
+        }
+        .inscricao {
+            background-color: #228B22;
+            color: white;
+            animation: blink 1s infinite alternate;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .audio-container {
+            margin-top: 20px;
+        }
+        .designer {
+            font-size: 12px;
+            font-style: italic;
+            font-family: 'Cardo', serif;
+            color: #555;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date("September 20, 2025 11:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const timeLeft = eventDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+        window.onload = updateCountdown;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>II Encontro de Oficiais <span>Especialistas</span></h1>
+        <div class="countdown" id="countdown">Carregando...</div>
+        <img src="logo.jpg" alt="Logo da Organização">
+        <div class="links">
+            <a href="https://maps.app.goo.gl/D7ebLmDTpkBC8SJd6" class="local" target="_blank">LOCAL</a>
+            <a href="https://bit.ly/InscricaoOfEspecialistasSJC2025" class="inscricao" target="_blank">INSCRIÇÃO</a>
+        </div>
+        <div class="audio-container">
+            <audio id="audio" controls autoplay>
+                <source src="Especialista da Aeronáutica.mp3" type="audio/mpeg">
+                Seu navegador não suporta a reprodução de áudio.
+            </audio>
+        </div>
+        <footer>
+            &copy; 2025 - Todos os direitos reservados.
+            <div class="designer">designed by Cel R1 Cáceres</div>
+        </footer>
+    </div>
+</body>
+</html>
